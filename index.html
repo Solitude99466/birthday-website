@@ -1080,6 +1080,26 @@ document.addEventListener('keydown', (e) => {
   update();
   setInterval(update, 1000);
 })();
+/* ========== 10. 生日当天自动首页放烟花 ========== */
+(function autoFireworksOnBirthday() {
+  const BIRTHDAY_MONTH = 11;  // 11月
+  const BIRTHDAY_DAY   = 22;  // 22日
+  
+  const now = new Date();
+  const isBirthday = (now.getMonth() + 1) === BIRTHDAY_MONTH && now.getDate() === BIRTHDAY_DAY;
+  
+  if (!isBirthday) return; // 不是生日当天，直接退出
+
+  // 如果是生日当天，立刻放一波烟花
+  for (let i = 0; i < 5; i++) {
+    setTimeout(() => launchRandomFirework(), i * 250);
+  }
+
+  // 然后每隔 1.2 秒放一朵，一直循环
+  setInterval(() => {
+    launchRandomFirework();
+  }, 1200);
+})();
 console.log('✨ 孙梦羽的生日宇宙已就绪 · 高级烟花系统已加载');
 
 </script>
